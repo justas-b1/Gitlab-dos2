@@ -58,9 +58,18 @@ python poc.py --domain https://your-gitlab-domain.com
 | `os.remove()`                 | Deletes the temporary file after all threads finish          |
 
 ## 🔍 Explanation
+
 The GitLab /api/graphql endpoint doesn't enforce strict input size limits, allowing it to accept very large payloads. While this flexibility is useful, it can lead to issues when the payload grows significantly in size.
 
 Internally, the GraphQL API performs several resource-intensive operations, such as querying for large datasets or resolving complex queries. These operations are generally manageable if the input payload is small, typically under 1KB. However, when the input grows to several megabytes, it places considerable strain on the backend. This can result in slower response times, higher memory usage, and in extreme cases, timeouts or failures.
+
+The namespace in variables can by anything, I.E
+
+variables = {
+    "fullPath": "1xxxxxxxx1xx123/xxxxxxx1xxxxxxx123",
+}
+
+You don't need to find any actual namespaces in that instance.
 
 ## Impact
 
