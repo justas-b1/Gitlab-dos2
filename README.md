@@ -62,8 +62,6 @@ The GitLab /api/graphql endpoint doesn't enforce strict input size limits, allow
 
 Internally, the GraphQL API performs several resource-intensive operations, such as querying for large datasets or resolving complex queries. These operations are generally manageable if the input payload is small, typically under 1KB. However, when the input grows to several megabytes, it places considerable strain on the backend. This can result in slower response times, higher memory usage, and in extreme cases, timeouts or failures.
 
-By testing with large payloads, we can identify the system's ability to handle heavy loads and determine potential performance bottlenecks. This helps in understanding the limitations of the API when dealing with high-volume queries and large datasets, especially in production environments.
-
 ## Impact
 
 Auto-scaling under attack can cause a cost spike, potentially breaching budget thresholds or credit limits.
@@ -95,25 +93,6 @@ From https://gitlab-com.gitlab.io/gl-security/product-security/appsec/cvss-calcu
 `When evaluating Availability impacts for DoS that require sustained traffic, use the 1k Reference Architecture. The number of requests must be fewer than the "test request per seconds rates" and cause 10+ seconds of user-perceivable unavailability to rate the impact as A:H.`
 
 This attack used < 1RPS which eventually caused an OOM crash on 1k Reference Architecture instance.
-
-### Theoretical Impact
-
-1. Advanced Monitoring Blind Spots: Alert Overload as a Smokescreen for Data Exfiltration
-
-DoS attacks are very noisy by nature—crashing services, flooding logs, and triggering alert storms. But that chaos can work in the attacker's favor. By overwhelming observability tools like Prometheus or Datadog with garbage metrics and cardinality explosions, an attacker can distract responders and degrade monitoring fidelity.
-
-A DoS on GitLab instance, for example, might not be the end goal—just the distraction. While teams scramble to stabilize GitLab, the attacker quietly hits a more valuable target elsewhere: cloud buckets, internal APIs, or CI-linked infrastructure.
-
-![Integrity](images/overload_dos.png)
-
-2. Cloud Provider Blacklisting/Suspension
-
-The attack causes 100%+ CPU usage over extended period of time.
-Providers like DigitalOcean, AWS, etc. use heuristic models to flag "suspicious" resource consumption. Legitimate causes (e.g., DDoS attacks, unoptimized code, or intensive computations) might be **mislabeled as abusive**, leading to temporary account suspension.
-
-Cryptojacking and Uncontrolled Resource Consumption are very similar in a way that they both use up computational resources and can result in massive financial damages, budget limit based account locks or even suspensions.
-
-![Integrity](images/similarities.png)
 
 ## 💡 Company Information
 
