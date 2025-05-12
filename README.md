@@ -77,7 +77,7 @@ Auto-scaling under attack can cause a cost spike, potentially breaching budget t
 
 If there's no auto-scaling and instance is default, recommended 8vCPU and 16GB ram:
 
-In Linux, an OOM (Out-of-Memory) crash is technically referred to as an "OOM Killer event" or "OOM-induced system termination." In POC video, it crashes in the last 20 seconds.
+In Linux, an OOM (Out-of-Memory) crash is technically referred to as an "OOM Killer event" or "OOM-induced system termination." In POC video, it crashes at ~2:00.
 
 ![Cloud Provider Response](images/cloud_provider_response.png)
 
