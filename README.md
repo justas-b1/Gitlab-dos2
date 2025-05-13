@@ -151,7 +151,7 @@ Shodan query:
 http.title:"GitLab"
 ```
 
-Returns over 50,000 publicly exposed GitLab instances. Some servers allow new user sign-ups without admin approval, which may permit unauthorized access to project listings or internal repositories.
+Returns over 50,000 publicly exposed GitLab instances.
 
 ![Shodan](images/shodan_gitlab_self_hosted.PNG)
 
