@@ -25,7 +25,7 @@ python poc.py --domain https://your-gitlab-domain.com
 | --------------- | ----------------------------------------------------------- | ------- |
 | `--domain`      | **(Required)** GitLab base URL (e.g., `https://your-gitlab-domain.com`) | *None*  |
 | `--threads`     | Number of concurrent threads                                | `99`     |
-| `--delay`       | Delay (in seconds) between launching threads - 1 is 1RPS.           | `1.0`   |
+| `--delay`       | Delay (in seconds) between launching threads - 1.0 is 1RPS, 0.5 is 2RPS, etc.           | `1.0`   |
 | `--batch-delay` | Delay (in seconds) between batches                          | `7.0`   |
 | `--batch-size`  | Number of threads per batch before applying batch delay     | `7`     |
 
