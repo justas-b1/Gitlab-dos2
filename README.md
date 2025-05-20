@@ -49,6 +49,8 @@ python poc.py --domain https://your-gitlab-domain.com
 | `threading.Thread`            | Manages parallel requests in Python threads                  |
 | `os.remove()`                 | Deletes the temporary file after all threads finish          |
 
+The script sends multiple concurrent GraphQL POST requests to a GitLab server using curl. It builds a very large payload and writes it to a temporary file. Threads are created to send requests in batches, with delays between each thread and batch. Each thread reads the same payload file and prints the result or error. After all requests complete, the temp file is deleted.
+
 ## 🔍 Explanation
 
 The GitLab /api/graphql endpoint doesn't enforce strict input size limits, allowing it to accept very large payloads. While this flexibility is useful, it can lead to issues when the payload grows significantly in size.
